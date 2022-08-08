@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Artazon</title>
+
+  <body>
+     <div id="main-content" class="container md-8">
+            <div id="content-home" class="page">
+              <div class="text-center">
+              <div class="card-deck">   
+                <% @products.each do |product| %>        
+                <div class="card" style="min-width:300px; max-width:300px">
+            <%= image_tag("#{product.name.downcase}.jpg", alt: "Picture of #{product.name.downcase}.", class: "card-img-top") %>
+                  <div class="card-body">
+                    <h5 class="card-title"> <%=product.name %></h5>
+                    <p class="card-text"><%=product.description %></p>
+                    <p class="card-text"><%=product.price%></p>
+                      <%= form_with(url:cart_add_path) do |f| %>
+                      <%= f.hidden_field :id, value: product.id %>
+                      <%= f.number_field :quantity, value: 0, min: 1 %>
+                      <%= f.submit "Add to Cart" %>
+                      <% end %>
+                </div>
+                    <p>
+                         <%= link_to "Show this product", product %>
+                     </p>
+                    </div> 
+                  <% end %>
+                </div>
+             </div>                   
+          </div>
+      </div>
+
+  <!--footer -->          
+  <footer class="bg-light text-center p-5"> 
+  <%= image_tag "paint.png", style: 'height:30px; width:30px;' %> 
+  <a href="https://www.flaticon.com/free-icons/paint" title="paint icons">Paint icons created by Freepik - Flaticon</a> 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+
+    
+  </body>
+</html>

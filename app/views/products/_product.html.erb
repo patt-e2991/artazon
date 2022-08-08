@@ -1,0 +1,31 @@
+<div id="<%= dom_id product %>">
+ <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6">
+                <%= image_tag("#{product.name.downcase}.jpg", alt: "Picture of #{product.name.downcase}.", class: "card-img-top mb-5 mb-md-0", style: "min-width:600px; max-width:700px")%>
+                    <div class="col-sm-6">
+                        <h1 class="display-5 fw-bolder"><%= product.name %></h1>
+                        <div class="fs-5 mb-5">
+                            <span>
+                              <%= product.price %>
+                            </span>
+                        </div>
+                         <%= product.description%>
+                        <div class="d-flex">
+                        <%= form_with(url:cart_add_path) do |f| %>
+                                <i class="bi-cart-fill me-1"></i>
+                                <%= f.hidden_field :id, value: product.id %>
+                                <%= f.number_field :quantity, value: 0, min: 1%>
+                                <%= f.submit "Add to Cart", class:"btn btn-outline-dark flex-shrink-0" %>
+                                <% end %>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ <%= link_to "Back to products", products_path %>
+
+   </section>
+
+    

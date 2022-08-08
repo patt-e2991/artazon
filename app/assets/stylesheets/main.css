@@ -1,0 +1,21 @@
+.hidden {
+  display: none;
+}
+label {
+  margin-bottom: 1px;
+  display: block;
+}
+
+.navbar {
+  min-height: 100px;
+}
+
+body, html {
+  height: 100%;
+  margin-top: 75px;
+}
+
+
+.nav-item {
+  margin-right: 20px;
+  }
